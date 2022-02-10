@@ -4,11 +4,11 @@ class UsersController < ApplicationController
 
     def show
         @user=User.find(params[:id])
-        @articles = @user.articles
+        @articles = @user.articles.paginate(page: params[:page], per_page: 5)
     end
 
     def index
-        @users=User.all
+        @users = User.paginate(page: params[:page], per_page: 5)
     end
 
     def new
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         @user=User.find(params[:id])
         if @user.update(params.require(:user).permit(:username,:email,:password))
             flash[:notice]="User updated successfully.."
-            redirect_to articles_path
+            redirect_to users_path
         else
             render 'edit'
         end    
