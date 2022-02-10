@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     end
     def create
         @user=User.new(params.require(:user).permit(:username,:email,:password))
+        session[:user_id] = @user.id
         if @user.save
             flash[:notice] ="hy #{@user.username} welcome to my app."
             redirect_to articles_path
