@@ -37,8 +37,12 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
+              <%= link_to"login", login_path, class:"nav-link" %>
               </li>
+              <li class="nav-item">
+              <%= link_to 'Logout', logout_path, class: "nav-link", method: :delete %>
+              </li>
+      
             </ul>
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
