@@ -37,7 +37,15 @@ class UsersController < ApplicationController
             render 'edit'
         end    
     end
-
+    def destroy
+        @user.destroy
+        session[:user_id] = nil
+        flash[:notice] = "Account and all associated articles successfully deleted"
+        redirect_to articles_path
+      end
+    
+    
+    private
     def require_same_user
 
         if current_user != @user

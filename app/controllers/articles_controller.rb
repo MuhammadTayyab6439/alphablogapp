@@ -2,7 +2,8 @@
 class ArticlesController < ApplicationController
 
   before_action :require_user, except: [:show,:index]
-#  before_action :require_same_user, only: [:edit,:update,:delete]
+ # before_action :require_same_user, only: [:edit,:update,:delete]
+ 
     def show
         @article=Article.find(params[:id])
 
@@ -55,7 +56,8 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
 
   end
-
+  
+private
 
   def require_same_user
     
