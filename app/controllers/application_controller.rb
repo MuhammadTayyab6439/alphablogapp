@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
         !!current_user #convert it into bolean
       end
 
+      def require_user
+        if !logged_in?
+            flash[:alert]="You must be logged in first to perform this action"
+            redirect_to login_path
+        end
+      end
+
 end
