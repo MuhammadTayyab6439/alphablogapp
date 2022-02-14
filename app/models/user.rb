@@ -1,7 +1,9 @@
 class User < ApplicationRecord
     before_save {self.email=email.downcase} 
     
+    #one to many association with articles
     has_many :articles, dependent: :destroy
+
     validates :username, presence: true, uniqueness: {case_sensitive:false}, length: {minimum:3,maximum:50}
   
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
