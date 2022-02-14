@@ -1,20 +1,22 @@
+#unit_testing is for models
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
 
+  #this runs before every test case
     def setup
         @category = Category.new(name: "Sports")
       end
-    
+    #assert check for true
       test "category should be valid" do
         assert @category.valid?
       end
-    
+    #assert_not check for false
       test "name should be present" do
         @category.name = " "
         assert_not @category.valid?
       end
-    
+      #to check uniqueness first object should present at db so we save it
       test "name should be unique" do
         @category.save
         @category2 = Category.new(name: "Sports")
